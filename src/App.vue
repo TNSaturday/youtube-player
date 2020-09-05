@@ -2,7 +2,7 @@
   <div>
     <h1>Youtube player</h1>
 
-    <SearchBar />
+    <SearchBar @termChange="onTermChange"/>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   name: 'App',
   components: {
     SearchBar,
+  },
+  methods: {
+    onTermChange(searchTerm) {
+      console.log(searchTerm);
+    }
   }
 };
 </script>
