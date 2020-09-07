@@ -4,7 +4,6 @@
 
     <SearchBar @termChange="onTermChange" />
     <VideoList :videos="videos"/>
-    {{ videos.length }}
   </div>
 </template>
 
@@ -13,7 +12,7 @@
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
-const API_KEY = 'AIzaSyAWoIq4zXcPkI1Dsz-6qIhGcerTT2L6tes';
+const API_KEY = 'AIzaSyA7ZqIn2iiV6xTKR-RJwgzef-1lA6UhgCk';
 
 export default {
   name: 'App',
@@ -39,6 +38,7 @@ export default {
           q: searchTerm
         }
       }).then(response => {
+        console.log(response.data.items);
         this.videos = response.data.items;
       });
     }
