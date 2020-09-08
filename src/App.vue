@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Youtube player</h1>
 
     <SearchBar @termChange="onTermChange" />
@@ -38,7 +38,6 @@ export default {
           q: searchTerm
         }
       }).then(response => {
-        console.log(response.data.items);
         this.videos = response.data.items;
       });
     }
