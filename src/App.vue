@@ -6,14 +6,17 @@
       @termChange="onTermChange"
     />
 
-    <VideoDetail 
+    <div class="row">
+      <VideoDetail 
       :video="selectedVideo"
-    />
+      />
 
-    <VideoList
-      @onVideoSelect="onVideoSelect" 
-      :videos="videos"
-    />
+      <VideoList
+        @onVideoSelect="onVideoSelect" 
+        :videos="videos"
+      />
+    </div>
+    
   </div>
 </template>
 
