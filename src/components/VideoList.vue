@@ -4,6 +4,7 @@
       v-for="video in videos"
       :key="video.etag"
       :video="video"
+      @videoSelect="onVideoSelect"
     />
   </ul>
 </template>
@@ -20,7 +21,12 @@ export default {
     // this must be equal to the left hand part of the v-bind directive,
     // e.g. :videos="videos"
     'videos',
-  ]
+  ],
+  methods: {
+    onVideoSelect(video) {
+      this.$emit('onVideoSelect', video);
+    },
+  },
 }
 </script>
 

@@ -2,8 +2,18 @@
   <div class="container">
     <h1>Youtube player</h1>
 
-    <SearchBar @termChange="onTermChange" />
-    <VideoList :videos="videos"/>
+    <SearchBar 
+      @termChange="onTermChange"
+    />
+
+    <VideoDetail 
+      :video="selectedVideo"
+    />
+
+    <VideoList
+      @onVideoSelect="onVideoSelect" 
+      :videos="videos"
+    />
   </div>
 </template>
 
@@ -12,6 +22,10 @@
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail';
+
+// Right now access is restricted to my IP, in production
+// API key should not be stored like this.
 const API_KEY = 'AIzaSyA7ZqIn2iiV6xTKR-RJwgzef-1lA6UhgCk';
 
 export default {
@@ -19,12 +33,14 @@ export default {
   components: {
     SearchBar,
     VideoList,
+    VideoDetail,
   },
   data() {
     return {
       // V-bind in the template ensures that every time videos are updated here
       // the new array is also passed to the VideoList component
       videos: [],
+      selectedVideo: null,
     };
   },
   methods: {
@@ -39,8 +55,10 @@ export default {
         }
       }).then(response => {
         this.videos = response.data.items;
-        console.log(this.videos);
       });
+    },
+    onVideoSelect(video) {
+      this.selectedVideo = video;
     }
   }
 };
