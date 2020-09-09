@@ -39,6 +39,7 @@ export default {
         }
       }).then(response => {
         this.videos = response.data.items;
+        console.log(this.videos);
       });
     }
   }
